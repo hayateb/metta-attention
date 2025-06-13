@@ -23,11 +23,7 @@
                 ("source is a hebbian link") ; if already hebbian_link nothing is done
                 (
                     (let*
-                        (
-                            ($removeHebbian (let $temp (removeHebbianLinksfromAF (collapse (match $space2 (HEBBIAN_LINK $a $b) (HEBBIAN_LINK $a $b)))) ()))
-                            ($removeSource
-                                (let $temp2 
-                                    (remove-atom (attentionalFocus) $source) ())) ; to minimize self connection I am unsure if this should exist
+                        (   
                             ($existingAsSourceHS  (getTargetNeighbors $source ASYMMETRIC_HEBBIAN_LINK $space)) ;;need to check if we should use source or sourceAtom
                             ($existingAsTarget  (getSourceNeighbors $source ASYMMETRIC_HEBBIAN_LINK $space))
                             ($needToBeSource ( setDifference $existingAsSourceHS) )
