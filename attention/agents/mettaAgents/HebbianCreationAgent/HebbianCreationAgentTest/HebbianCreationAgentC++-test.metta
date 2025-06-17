@@ -51,7 +51,7 @@
 !(setStv (INHERITANCE_LINK Dummy2 Dummy3) (0.9 conf90))
 
 ; Stimulate the atoms in the AttentionalFocus with a stimulus of 200
-
+!(line 54)
 !(stimulate Kermit 200)
 !(stimulate Frog 200)
 !(stimulate Animal 200)
