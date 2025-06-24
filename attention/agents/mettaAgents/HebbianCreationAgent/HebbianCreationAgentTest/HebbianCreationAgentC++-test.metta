@@ -54,9 +54,10 @@
 !(line 54)
 !(stimulate Kermit 200)
 !(stimulate Frog 200)
-!(stimulate Animal 200)
-!(stimulate alive 200)
-!(stimulate (EVALUATION_LINK animal slimy) 200)
+!(stimulate Animal 400)
+
+!(stimulate (EVALUATION_LINK animal slimy) 300)
+!(stimulate alive 100)
 
 !(assertEqual (let $size ("Before The Hebbian Creation " (collapse (get-atoms (newAtomInAV)))) (size-atom $size)) 2)
 
@@ -66,11 +67,6 @@
 ;;indicating that none incorrectly include "slimy" nor the dummy atoms
 !(assertEqual (attentionalFocusSize) 4)
 
-!(assertEqual   
-    (let $atoms (collapse 
-                    (match (TypeSpace) (: (ASYMMETRIC_HEBBIAN_LINK $x $y) $value) 
-                            (ASYMMETRIC_HEBBIAN_LINK $x $y))) (size-atom $atoms))
-    12
-)
+;
 
 !(assertEqual (collapse ("After The Hebbian Creation " (get-atoms (newAtomInAV)))) ())

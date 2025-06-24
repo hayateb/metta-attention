@@ -222,8 +222,12 @@
            ($maxSize (getAttentionParam MAX_AF_SIZE)) 
            ($sti (getSTI $atom)) 
            ($currentSize (attentionalFocusSize)) 
-           ($isInAF (atomIsInAF $atom)) ; Check if atom is already in AF
+         
+           ($isInAF (atomIsInAF $atom))
+            ; Check if atom is already in AF
+            (() (println! $atom))
        )
+
 
        (if $isInAF
            ; Case 1: Atom is already in AF, update its value

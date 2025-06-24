@@ -23,35 +23,33 @@
                 ("source is a hebbian link") ; if already hebbian_link nothing is done
                 (
                     (let*
-                    (
-                        ($hebbian_link (collapse (match $space2 (HEBBIAN_LINK $a $b) (HEBBIAN_LINK $a $b))))
-                            ($existingAsSourceHS  (getTargetNeighbors $source ASYMMETRIC_HEBBIAN_LINK $space)) ;;need to check if we should use source or sourceAtom
-                            ($existingAsTarget  (getSourceNeighbors $source ASYMMETRIC_HEBBIAN_LINK $space))
-                            ($needToBeSource ( setDifference $existingAsSourceHS) )
-                            ($needToBeTarget  (setDifference $existingAsTarget))
-                            ($count (size-atom $needToBeTarget ))
-                            ($_ (collapse (addHebbian (superpose $needToBeSource) $source )))
-                            ($__ (collapse (addHebbian $source (superpose $needToBeTarget))))
-                            ($farLinks (/ $count localToFarLinks )) ;round by default
-                            ($___ (addFromOutSideAF $source $farLinks))
-                            ($incomingSet (getIncomingSetByType $source HEBBIAN_LINK)) ;should I add other types of hebbian links?
-                        )
-
-                        )
-                    )                             
-                            )
+                        (
                             
+                                ($existingAsSourceHS  (getTargetNeighbors $source ASYMMETRIC_HEBBIAN_LINK $space)) ;;need to check if we should use source or sourceAtom
+                                ($existingAsTarget  (getSourceNeighbors $source ASYMMETRIC_HEBBIAN_LINK $space))
+                                ($needToBeSource ( setDifference $existingAsSourceHS) )
+                                ($needToBeTarget  (setDifference $existingAsTarget))
+                                ($count (size-atom $needToBeTarget ))
+                                ($_ (collapse (addHebbian (superpose $needToBeSource) $source )))
+                                ($__ (collapse (addHebbian $source (superpose $needToBeTarget))))
+                                ($farLinks (/ $count localToFarLinks )) ;round by default
+                                ($___ (addFromOutSideAF $source $farLinks))
+                                ($incomingSet (getIncomingSetByType $source HEBBIAN_LINK)) ;should I add other types of hebbian links?
+                            )
                         (
                             (if (> (size-atom $incomingSet) maxLinkNum )
                                 (removeLinkRecursively (- (size-atom $incomingSet) maxLinkNum))
                                 ()
                             )
-                            (updateAttentionalFocus $source False)
+                            
                         )
                     )
                 )
             )
+        )
+    )
 
+)
 ;;Function: removeHebbianLinksfromAF
 ;;Description: removes Hebbian Links from the AF
 ;;Parameters: Atom
